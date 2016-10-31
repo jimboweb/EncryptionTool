@@ -161,18 +161,44 @@ public class EncryptionToolUnitTest extends javax.swing.JFrame {
     }//GEN-LAST:event_TestDecryptionToolButtonActionPerformed
 
     private void testPatternEncryptButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_testPatternEncryptButtonActionPerformed
-        // [tk] Make message to encode and pattern
-        // figure out what encoded message would be
-        // call and test
-        //  don't use .equals method because I think it treats two
-        // strings of equal value as different things, which to 
-        // java they are
-        // also fix that above
+        String message = "Be sure to drink your Ovaltine.";
+        String expectedEncryptedMessage = "Î×ÆÍâÖA»ÛÕÒtáØãÙA¦ßÍÐ½ÖÎ";
+        String encryptedMessage = enc.encrypt(message);
+        if(encryptedMessage.equals(expectedEncryptedMessage)){
+            EncryptionResponseLabel.setText("<head><meta charset = 'UTF-8'></head>"+ 
+                    "<html>Successful unit test. Encrypted Message is " +
+            "<span style = 'color:#ff0000>" +
+            expectedEncryptedMessage + 
+            "</span></html>");
+        } else {
+            EncryptionResponseLabel.setText(
+            "<html>Unsuccessful unit test. Encrypted Message is " + 
+            encryptedMessage + 
+            "</span>should be <span style = 'color:#ff0000'>" +
+             expectedEncryptedMessage + 
+             "</span></html>");
+            }
+        
     }//GEN-LAST:event_testPatternEncryptButtonActionPerformed
 
     private void testPatternDecryptionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_testPatternDecryptionButtonActionPerformed
-        // [tk] Take encoded message from aboe
-        // decode it and test
+        String encryptedMessage = "Î×ÆÍâÖA»ÛÕÒtáØãÙA¦ßÍÐ½ÖÎ";
+        String expectedDecryptedMessage = "Be sure to drink your Ovaltine.";
+        String decryptedMessage = dec.decrypt(encryptedMessage);
+        if(decryptedMessage==expectedDecryptedMessage){
+            DecryptionResponseLabel.setText(
+                    "<html>Successful unit test. Encrypted Message is " +
+                    "<span style = 'color:#ff0000>" +
+                    originalMessage +
+                    "</span></html>");
+        } else {
+           DecryptionResponseLabel.setText(
+                   "<html>Unsuccessful unit test. Encrypted Message is " + 
+                   decryptedMessage + 
+                   "</span>should be <span style = 'color:#ff0000'>" +
+                    expectedDecryptedMessage + 
+                    "</span></html>");
+        }        // decode it and test
     }//GEN-LAST:event_testPatternDecryptionButtonActionPerformed
 
     /**
