@@ -163,7 +163,7 @@ public class EncryptionToolUnitTest extends javax.swing.JFrame {
     private void testPatternEncryptButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_testPatternEncryptButtonActionPerformed
         String message = "Be sure to drink your Ovaltine.";
         String expectedEncryptedMessage = "Î×ÆÍâÖA»ÛÕÒtáØãÙA¦ßÍÐ½ÖÎ";
-        String encryptedMessage = enc.encrypt(message);
+        String encryptedMessage = enc.patternEncrypt(message, pattern);
         if(encryptedMessage.equals(expectedEncryptedMessage)){
             EncryptionResponseLabel.setText("<head><meta charset = 'UTF-8'></head>"+ 
                     "<html>Successful unit test. Encrypted Message is " +
@@ -184,8 +184,8 @@ public class EncryptionToolUnitTest extends javax.swing.JFrame {
     private void testPatternDecryptionButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_testPatternDecryptionButtonActionPerformed
         String encryptedMessage = "Î×ÆÍâÖA»ÛÕÒtáØãÙA¦ßÍÐ½ÖÎ";
         String expectedDecryptedMessage = "Be sure to drink your Ovaltine.";
-        String decryptedMessage = dec.decrypt(encryptedMessage);
-        if(decryptedMessage==expectedDecryptedMessage){
+        String decryptedMessage = dec.patternDecrypt(encryptedMessage, pattern);
+        if(decryptedMessage.equals(expectedDecryptedMessage)){
             DecryptionResponseLabel.setText(
                     "<html>Successful unit test. Encrypted Message is " +
                     "<span style = 'color:#ff0000>" +
@@ -241,6 +241,7 @@ public class EncryptionToolUnitTest extends javax.swing.JFrame {
     }
     String originalMessage = "Be sure to drink your Ovaltine.";
     String expectedEncryptedMessage = "Gj%xzwj%yt%iwnsp%~tzw%T{fqynsj3";
+    String pattern = "Wild thing!";
     EncryptionTool enc = new EncryptionTool();
     DecryptionTool dec = new DecryptionTool();
 
